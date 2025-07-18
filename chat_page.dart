@@ -7,6 +7,7 @@ import 'package:http/http.dart' as http;
 import 'models.dart';
 import 'character_service.dart';
 import 'file_upload_widget.dart';
+import 'mcp_page.dart';
 
 /* ----------------------------------------------------------
    CHAT PAGE
@@ -113,6 +114,13 @@ class ChatPageState extends State<ChatPage> {
       _editingMessageId = null;
       _controller.clear();
     });
+  }
+
+  void _showMcpServers() {
+    Navigator.push(
+      context,
+      MaterialPageRoute(builder: (context) => const McpPage()),
+    );
   }
 
   void _showUserMessageOptions(BuildContext context, Message message) {
@@ -390,6 +398,7 @@ class ChatPageState extends State<ChatPage> {
             awaitingReply: _awaitingReply,
             isEditing: _editingMessageId != null,
             onCancelEdit: _cancelEditing,
+            onMcpPressed: _showMcpServers,
             onFilesUploaded: (content) {
               _controller.text = content;
               _send();
@@ -510,6 +519,7 @@ class _InputBar extends StatelessWidget {
     required this.awaitingReply,
     required this.isEditing,
     required this.onCancelEdit,
+    required this.onMcpPressed,
     this.onFilesUploaded,
   });
   final TextEditingController controller;
@@ -518,6 +528,7 @@ class _InputBar extends StatelessWidget {
   final bool awaitingReply;
   final bool isEditing;
   final VoidCallback onCancelEdit;
+  final VoidCallback onMcpPressed;
   final void Function(String)? onFilesUploaded;
 
   @override
@@ -551,6 +562,12 @@ class _InputBar extends StatelessWidget {
             child: Row(
               crossAxisAlignment: CrossAxisAlignment.end,
               children: [
+                IconButton(
+                  padding: const EdgeInsets.all(8),
+                  onPressed: onMcpPressed,
+                  icon: Icon(Icons.extension, color: Colors.grey.shade600, size: 20),
+                  tooltip: 'MCP Servers',
+                ),
                 if (onFilesUploaded != null)
                   FileUploadWidget(onFilesUploaded: onFilesUploaded),
                 Expanded(

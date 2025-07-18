@@ -3,11 +3,13 @@ import 'package:flutter/services.dart';
 
 import 'auth_and_profile_pages.dart';
 import 'auth_service.dart';
+import 'mcp_service.dart';
 
 void main() {
   WidgetsFlutterBinding.ensureInitialized();
-  // Initialize the AuthService singleton so it's available everywhere
-  AuthService(); 
+  // Initialize services
+  AuthService();
+  McpService().initialize(); 
   
   SystemChrome.setSystemUIOverlayStyle(const SystemUiOverlayStyle(
     systemNavigationBarColor: Color(0xFFF7F7F7),

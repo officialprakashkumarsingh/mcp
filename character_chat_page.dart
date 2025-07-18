@@ -8,6 +8,7 @@ import 'package:http/http.dart' as http;
 import 'models.dart';
 import 'character_models.dart';
 import 'character_service.dart';
+import 'mcp_page.dart';
 
 class CharacterChatPage extends StatefulWidget {
   final Character character;
@@ -607,6 +608,18 @@ class _CharacterChatPageState extends State<CharacterChatPage> {
             ),
             child: Row(
               children: [
+                Container(
+                  decoration: BoxDecoration(
+                    color: Colors.grey.shade100,
+                    shape: BoxShape.circle,
+                  ),
+                  child: IconButton(
+                    onPressed: _showMcpServers,
+                    icon: Icon(Icons.extension, color: Colors.grey.shade600, size: 20),
+                    tooltip: 'MCP Servers',
+                  ),
+                ),
+                const SizedBox(width: 8),
                 Expanded(
                   child: Container(
                     decoration: BoxDecoration(
@@ -647,6 +660,13 @@ class _CharacterChatPageState extends State<CharacterChatPage> {
           ),
         ],
       ),
+    );
+  }
+
+  void _showMcpServers() {
+    Navigator.push(
+      context,
+      MaterialPageRoute(builder: (context) => const McpPage()),
     );
   }
 
