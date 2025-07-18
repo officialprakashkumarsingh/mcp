@@ -1,0 +1,51 @@
+name: aham_ai
+description: Flutter app with MCP server support
+
+version: 1.0.0+1
+
+environment:
+  sdk: '>=3.0.0 <4.0.0'
+  flutter: ">=3.10.0"
+
+dependencies:
+  flutter:
+    sdk: flutter
+  
+  # UI & Material Design
+  cupertino_icons: ^1.0.6
+  google_fonts: ^6.1.0
+  flutter_markdown: ^0.6.18
+  
+  # HTTP & Networking
+  http: ^1.1.0
+  
+  # MCP Server Support
+  dart_mcp: ^0.3.2
+  
+  # File handling
+  file_picker: ^6.1.1
+  path_provider: ^2.1.1
+  
+  # State Management & Storage
+  shared_preferences: ^2.2.2
+  
+  # Utils
+  uuid: ^4.2.1
+
+dev_dependencies:
+  flutter_test:
+    sdk: flutter
+  flutter_lints: ^3.0.0
+
+flutter:
+  uses-material-design: true
+  
+  # Assets
+  # assets:
+  #   - images/
+  
+  # Fonts
+  # fonts:
+  #   - family: Inter
+  #     fonts:
+  #       - asset: fonts/Inter-Regular.ttf
